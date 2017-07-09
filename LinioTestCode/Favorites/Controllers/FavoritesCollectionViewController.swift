@@ -9,11 +9,12 @@
 import UIKit
 import SVProgressHUD
 import SDWebImage
+import DZNEmptyDataSet
 
 private let reuseIdentifierSnap = "SnapshotCell"
 private let reuseIdentifierFav = "FavoritesCell"
 
-class FavoritesCollectionViewController: UICollectionViewController {
+class FavoritesCollectionViewController: UICollectionViewController, DZNEmptyDataSetSource, DZNEmptyDataSetDelegate{
 	
 	
 	var dataSourceSectionOne : [WishList] = []
@@ -108,23 +109,69 @@ class FavoritesCollectionViewController: UICollectionViewController {
 		if section == 0 {
 			return CGSize(width: 0, height: 0)
 		} else {
-			return CGSize(width: screenSize.width, height: 50)
+			if dataSourceSectionTwo.count > 0 {
+				return CGSize(width: screenSize.width, height: 50)
+			} else {
+				return CGSize(width: 0, height: 0)
+			}
 		}
 	
 	}
 	
+	// Mark : DZNEmpty DataSetDelegate
+	
+	func image (forEmptyDataSet scrollView: UIScrollView) -> UIImage {
+		return UIImage(named: "Favorites_Empty")!
+	}
+	
+	func  title(forEmptyDataSet scrollView: UIScrollView!) -> NSAttributedString! {
+		return NSAttributedString.init(string: "¡Ups!")
+	}
+	
+	func description(forEmptyDataSet scrollView: UIScrollView!) -> NSAttributedString! {
+		return NSAttributedString.init(string: "Por el momento no hay favoritos para mostrar, asegúrate de tener una conexión estable")
+		
+		
+	}
+	
+	func buttonTitle(forEmptyDataSet scrollView: UIScrollView!, for state: UIControlState) -> NSAttributedString! {
+		
+		let attrString = NSAttributedString (
+			string: "Actualizar",
+			attributes: [NSForegroundColorAttributeName: UIColor.white])
+		
+		return attrString
+	}
+	
+	func buttonBackgroundImage(forEmptyDataSet scrollView: UIScrollView!, for state: UIControlState) -> UIImage! {
+		return nil
+	}
+	
+	func emptyDataSet(_ scrollView: UIScrollView!, didTap button: UIButton!) {
+			requestFavorites()
+	}
+	
+	//Mark : Connection Methods 
+	
 	func requestFavorites() {
-		SVProgressHUD.show(withStatus: "Actualizando favoritos...")
-		LibraryAPI.sharedInstance.getFavorites(Success: { (response) in
-			self.dataSourceSectionOne = response
-			self.dataSourceSectionTwo = Utils.getAllProductsFrom(wishList: response)
-			DispatchQueue.main.async {
-				self.collectionView?.reloadData()
+		
+		if Reachability.isConnectedToNetwork() {
+			SVProgressHUD.show(withStatus: "Actualizando favoritos...")
+			LibraryAPI.sharedInstance.getFavorites(Success: { (response) in
+				self.dataSourceSectionOne = response
+				self.dataSourceSectionTwo = Utils.getAllProductsFrom(wishList: response)
+				DispatchQueue.main.async {
+					self.collectionView?.reloadData()
+				}
+				SVProgressHUD.dismiss()
+			}) { (Error) in
+				SVProgressHUD.showError(withStatus: Error.description)
 			}
-			SVProgressHUD.dismiss()
-		}) { (Error) in
-			SVProgressHUD.showError(withStatus: Error.description)
+		} else {
+			SVProgressHUD.showInfo(withStatus: "Necesitas Conexión a Internet para recuperar tus favoritos.")
 		}
+		
+		
 	}
 	
 
