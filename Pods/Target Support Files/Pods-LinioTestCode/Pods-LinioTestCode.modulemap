@@ -1,0 +1,6 @@
+framework module Pods_LinioTestCode {
+  umbrella header "Pods-LinioTestCode-umbrella.h"
+
+  export *
+  module * { export * }
+}

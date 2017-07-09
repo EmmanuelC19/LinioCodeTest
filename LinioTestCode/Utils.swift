@@ -13,6 +13,11 @@ public class Utils {
 	
 	class func getArrayOfProducts (dictionary : Dictionary<String, AnyObject>) -> [Product] {
 		var productsArray : [Product] = []
+		var product : Product
+		for element in dictionary {
+			product = Product(dictionary: element.value as! Dictionary<String, AnyObject>)
+			productsArray.append(product)
+		}
 		
 		return productsArray
 	}
@@ -25,6 +30,16 @@ public class Utils {
 			wishListArray.append(wishList)
 		}
 		return wishListArray
+	}
+	
+	class func getAllProductsFrom (wishList : [WishList]) -> [Product] {
+		var productsArray : [Product] = []
+		for element in wishList {
+			for product in element.products{
+				productsArray.append(product)
+			}
+		}
+		return productsArray
 	}
 	
 	

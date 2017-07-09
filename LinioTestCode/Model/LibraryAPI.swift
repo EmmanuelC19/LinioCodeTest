@@ -7,7 +7,7 @@
 //
 
 import Foundation
-//import SVProgressHUD
+import SVProgressHUD
 
 class LibraryAPI {
 	

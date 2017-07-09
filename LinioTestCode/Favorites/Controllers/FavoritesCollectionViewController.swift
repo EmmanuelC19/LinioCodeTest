@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import SVProgressHUD
+import SDWebImage
 
 private let reuseIdentifierSnap = "SnapshotCell"
 private let reuseIdentifierFav = "FavoritesCell"
@@ -50,10 +52,26 @@ class FavoritesCollectionViewController: UICollectionViewController {
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
 		
 		if indexPath.section == 0 {
-			let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifierSnap, for: indexPath)
+			 let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifierSnap, for: indexPath) as! SnapshotCollectionViewCell
+			
+			let selectedWishlist = dataSourceSectionOne[indexPath.row]
+			let products = selectedWishlist.products
+			cell.wishListName.text = selectedWishlist.name
+			cell.wishListCount.text = String(selectedWishlist.products.count)
+			cell.firstImage.sd_setImage(with: URL(string: products[0].image), placeholderImage: UIImage(named:"product_placeholder"))
+			cell.secondImage.sd_setImage(with: URL(string: products[1].image), placeholderImage: UIImage(named:"product_placeholder"))
+			cell.thirdImage.sd_setImage(with: URL(string: products[2].image), placeholderImage: UIImage(named:"product_placeholder"))
+			
 			return cell
+			
 		} else {
-			let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifierFav, for: indexPath)
+			let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifierFav, for: indexPath) as! FavoriteCollectionViewCell
+			
+			let selectedProduct = dataSourceSectionTwo[indexPath.row]
+			
+			cell.setupFavoriteCell(displayedProduct: selectedProduct)
+			cell.productImage.sd_setImage(with: URL(string: selectedProduct.image), placeholderImage: UIImage(named:"product_placeholder"))
+			
 			return cell
 		}
 		
@@ -83,13 +101,16 @@ class FavoritesCollectionViewController: UICollectionViewController {
 	}
 	
 	func requestFavorites() {
+		SVProgressHUD.show(withStatus: "Actualizando favoritos...")
 		LibraryAPI.sharedInstance.getFavorites(Success: { (response) in
 			self.dataSourceSectionOne = response
+			self.dataSourceSectionTwo = Utils.getAllProductsFrom(wishList: response)
 			DispatchQueue.main.async {
 				self.collectionView?.reloadData()
 			}
+			SVProgressHUD.dismiss()
 		}) { (Error) in
-			print(Error)
+			SVProgressHUD.showError(withStatus: Error.description)
 		}
 	}
 	
