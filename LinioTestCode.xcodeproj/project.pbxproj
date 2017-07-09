@@ -11,6 +11,9 @@
 		1463AD811F11AE0300C04B7E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1463AD7F1F11AE0300C04B7E /* Main.storyboard */; };
 		1463AD831F11AE0300C04B7E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1463AD821F11AE0300C04B7E /* Assets.xcassets */; };
 		14D468721F11CC3C0030F29E /* FavoritesCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14D468711F11CC3C0030F29E /* FavoritesCollectionViewController.swift */; };
+		14D552D11F11F1900036FAE1 /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14D552D01F11F1900036FAE1 /* Reachability.swift */; };
+		14D552D31F11F1C10036FAE1 /* HTTPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14D552D21F11F1C10036FAE1 /* HTTPClient.swift */; };
+		14D552D51F11F20A0036FAE1 /* LibraryAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14D552D41F11F20A0036FAE1 /* LibraryAPI.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -20,6 +23,9 @@
 		1463AD821F11AE0300C04B7E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1463AD871F11AE0300C04B7E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		14D468711F11CC3C0030F29E /* FavoritesCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesCollectionViewController.swift; sourceTree = "<group>"; };
+		14D552D01F11F1900036FAE1 /* Reachability.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
+		14D552D21F11F1C10036FAE1 /* HTTPClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTTPClient.swift; sourceTree = "<group>"; };
+		14D552D41F11F20A0036FAE1 /* LibraryAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LibraryAPI.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -52,6 +58,7 @@
 		1463AD7A1F11AE0300C04B7E /* LinioTestCode */ = {
 			isa = PBXGroup;
 			children = (
+				14D552CF1F11F14E0036FAE1 /* ConectionManager */,
 				14D468731F11CED80030F29E /* Model */,
 				14D4686F1F11CC040030F29E /* Favorites */,
 				1463AD7B1F11AE0300C04B7E /* AppDelegate.swift */,
@@ -82,6 +89,17 @@
 			isa = PBXGroup;
 			children = (
 			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		14D552CF1F11F14E0036FAE1 /* ConectionManager */ = {
+			isa = PBXGroup;
+			children = (
+				14D552D01F11F1900036FAE1 /* Reachability.swift */,
+				14D552D21F11F1C10036FAE1 /* HTTPClient.swift */,
+				14D552D41F11F20A0036FAE1 /* LibraryAPI.swift */,
+			);
+			name = ConectionManager;
 			path = Model;
 			sourceTree = "<group>";
 		};
@@ -156,7 +174,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				14D468721F11CC3C0030F29E /* FavoritesCollectionViewController.swift in Sources */,
+				14D552D51F11F20A0036FAE1 /* LibraryAPI.swift in Sources */,
 				1463AD7C1F11AE0300C04B7E /* AppDelegate.swift in Sources */,
+				14D552D31F11F1C10036FAE1 /* HTTPClient.swift in Sources */,
+				14D552D11F11F1900036FAE1 /* Reachability.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
