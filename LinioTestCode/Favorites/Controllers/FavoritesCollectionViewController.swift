@@ -15,6 +15,7 @@ private let reuseIdentifierFav = "FavoritesCell"
 
 class FavoritesCollectionViewController: UICollectionViewController {
 	
+	
 	var dataSourceSectionOne : [WishList] = []
 	var dataSourceSectionTwo : [Product] = []
 
@@ -98,6 +99,18 @@ class FavoritesCollectionViewController: UICollectionViewController {
 			
 			assert(false, "Unexpected element kind")
 		}
+	}
+	
+	func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize{
+		
+		let screenSize: CGRect = UIScreen.main.bounds
+
+		if section == 0 {
+			return CGSize(width: 0, height: 0)
+		} else {
+			return CGSize(width: screenSize.width, height: 50)
+		}
+	
 	}
 	
 	func requestFavorites() {

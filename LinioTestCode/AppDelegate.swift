@@ -48,6 +48,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 		let tabBarController = self.window?.rootViewController as! UITabBarController
 		tabBarController.selectedIndex = 2 // any index you want
 	
+		UITabBarItem.appearance().setTitleTextAttributes([NSForegroundColorAttributeName: UIColor.white], for: .selected)
+		
+		UITabBarItem.appearance().setTitleTextAttributes([NSForegroundColorAttributeName: UIColor.white], for: .normal)
 		
 		UINavigationBar.appearance().shadowImage = UIImage()
 		UINavigationBar.appearance().setBackgroundImage(UIImage(), for: .default)
