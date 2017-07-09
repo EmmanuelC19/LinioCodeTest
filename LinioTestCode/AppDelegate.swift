@@ -16,10 +16,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 	func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
 		
-		let tabBarController = self.window?.rootViewController as! UITabBarController
-		tabBarController.selectedIndex = 2 // any index you want
-	UITabBarItem.appearance().setTitleTextAttributes([NSAttributedStringKey.foregroundColor:UIColor.white], for: .normal)
-	UITabBarItem.appearance().setTitleTextAttributes([NSAttributedStringKey.foregroundColor:UIColor.white], for: .selected)
+		setupStandarsForApplicarion()
 		
 		// Override point for customization after application launch.
 		return true
@@ -45,6 +42,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 	func applicationWillTerminate(_ application: UIApplication) {
 		// Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+	}
+	
+	func setupStandarsForApplicarion (){
+		let tabBarController = self.window?.rootViewController as! UITabBarController
+		tabBarController.selectedIndex = 2 // any index you want
+	
+		
+		UINavigationBar.appearance().shadowImage = UIImage()
+		UINavigationBar.appearance().setBackgroundImage(UIImage(), for: .default)
+		
 	}
 
 
