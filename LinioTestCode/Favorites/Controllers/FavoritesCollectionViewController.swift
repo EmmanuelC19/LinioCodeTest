@@ -12,6 +12,9 @@ private let reuseIdentifierSnap = "SnapshotCell"
 private let reuseIdentifierFav = "FavoritesCell"
 
 class FavoritesCollectionViewController: UICollectionViewController {
+	
+	var dataSourceSectionOne : [WishList] = []
+	var dataSourceSectionTwo : [Product] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,9 +39,9 @@ class FavoritesCollectionViewController: UICollectionViewController {
 		
 		switch section {
 		case 0:
-			return 2
+			return dataSourceSectionOne.count
 		case 1:
-			return 3
+			return dataSourceSectionTwo.count
 		default:
 			return 0
 		}
@@ -81,10 +84,15 @@ class FavoritesCollectionViewController: UICollectionViewController {
 	
 	func requestFavorites() {
 		LibraryAPI.sharedInstance.getFavorites(Success: { (response) in
-			print(response)
+			self.dataSourceSectionOne = response
+			DispatchQueue.main.async {
+				self.collectionView?.reloadData()
+			}
 		}) { (Error) in
 			print(Error)
 		}
 	}
+	
+
 
 }

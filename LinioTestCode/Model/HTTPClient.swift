@@ -37,14 +37,17 @@ class HTTPClient: NSObject {
 	func doRequest(method: String, type: String, parameters: Dictionary<String, AnyObject>?, onSuccess: @escaping (AnyObject) -> (), onError: @escaping (NSError) -> ()) {
 		
 		prepareRequestWithMethod(method: method, type: type)
-		print("PARAMETERS: \(String(describing: parameters))")
 		
-		do {
-			request!.httpBody = try JSONSerialization.data(withJSONObject: parameters!, options: [])
-			// use anyObj here
-		} catch {
-			request!.httpBody = "".data(using: String.Encoding.utf8, allowLossyConversion: false)
+		if !(parameters?.isEmpty)! {
+			do {
+				request!.httpBody = try JSONSerialization.data(withJSONObject: parameters!, options: [])
+				// use anyObj here
+			} catch {
+				request!.httpBody = "".data(using: String.Encoding.utf8, allowLossyConversion: false)
+			}
 		}
+		
+		
 		
 		var task = URLSessionDataTask()
 		task = session.dataTask(with: request! as URLRequest, completionHandler: {(data, response, error) in
@@ -67,10 +70,9 @@ class HTTPClient: NSObject {
 			if (data?.count)! > 0 {
 				
 				do {
-					if let dictionaryOK = try JSONSerialization.jsonObject(with: data!, options: JSONSerialization.ReadingOptions.allowFragments) as? [String: AnyObject] {
+					if let dictionaryOK = try JSONSerialization.jsonObject(with: data!, options: JSONSerialization.ReadingOptions.allowFragments) as? [[String: AnyObject]] {
 						
 						responseObject = dictionaryOK as AnyObject?
-						print(responseObject ?? "Empty Object")
 					}
 				} catch {
 					print(error)
@@ -80,15 +82,16 @@ class HTTPClient: NSObject {
 			let emptyDict : [String:String] = [:]
 			if responseObject == nil {
 				
-				responseDictionary = emptyDict as AnyObject?
+				responseDictionary = data as AnyObject
+				
 			}else {
 				switch responseObject {
 				case let validDict as Dictionary<String, AnyObject> :
 					print(validDict)
 					responseDictionary = responseObject as! Dictionary<String, AnyObject> as AnyObject?
-				case let arrayOfElements as NSArray:
+				case let arrayOfElements as [[String: AnyObject]]:
 					print(arrayOfElements)
-					responseDictionary = arrayOfElements
+					responseDictionary = arrayOfElements as AnyObject
 				default:
 					responseDictionary = emptyDict as AnyObject?
 					print("Se recibio un objeto no manejable")
@@ -114,10 +117,8 @@ class HTTPClient: NSObject {
 		let url = NSURL(string: "\(SERVER)\(method)")
 		
 		print(url ?? "Empty URL")
-	
-		if (request == nil)  {
-			request = NSMutableURLRequest(url: url! as URL)
-		}
+		request = NSMutableURLRequest(url: url! as URL)
+		request!.httpMethod = type
 		request!.timeoutInterval = 60
 	}
 	
