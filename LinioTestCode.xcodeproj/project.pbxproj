@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		1463AD7C1F11AE0300C04B7E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1463AD7B1F11AE0300C04B7E /* AppDelegate.swift */; };
-		1463AD7E1F11AE0300C04B7E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1463AD7D1F11AE0300C04B7E /* ViewController.swift */; };
 		1463AD811F11AE0300C04B7E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1463AD7F1F11AE0300C04B7E /* Main.storyboard */; };
 		1463AD831F11AE0300C04B7E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1463AD821F11AE0300C04B7E /* Assets.xcassets */; };
 /* End PBXBuildFile section */
@@ -16,7 +15,6 @@
 /* Begin PBXFileReference section */
 		1463AD781F11AE0300C04B7E /* LinioTestCode.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LinioTestCode.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1463AD7B1F11AE0300C04B7E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		1463AD7D1F11AE0300C04B7E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		1463AD801F11AE0300C04B7E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		1463AD821F11AE0300C04B7E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1463AD871F11AE0300C04B7E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -53,7 +51,6 @@
 			isa = PBXGroup;
 			children = (
 				1463AD7B1F11AE0300C04B7E /* AppDelegate.swift */,
-				1463AD7D1F11AE0300C04B7E /* ViewController.swift */,
 				1463AD7F1F11AE0300C04B7E /* Main.storyboard */,
 				1463AD821F11AE0300C04B7E /* Assets.xcassets */,
 				1463AD871F11AE0300C04B7E /* Info.plist */,
@@ -131,7 +128,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1463AD7E1F11AE0300C04B7E /* ViewController.swift in Sources */,
 				1463AD7C1F11AE0300C04B7E /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -170,6 +166,8 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
@@ -225,6 +223,8 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
@@ -304,6 +304,7 @@
 				1463AD8C1F11AE0300C04B7E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
