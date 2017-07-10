@@ -16,5 +16,14 @@ class SnapshotCollectionViewCell: UICollectionViewCell {
 	@IBOutlet weak var wishListName: UILabel!
 	@IBOutlet weak var wishListCount: UILabel!
 	
+
+	@IBOutlet var ContraintsCollectionOne: [NSLayoutConstraint]!
+	
+	@IBOutlet var ContraintCollectionTwo: [NSLayoutConstraint]!
+	
+	override func awakeFromNib() {
+		InterfaceHelper.fixScreenForSmallDevices(contriants: (ContraintsCollectionOne,ContraintCollectionTwo))
+	}
+	
     
 }

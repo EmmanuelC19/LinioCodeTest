@@ -20,6 +20,7 @@
 		14D8A26A1F129333007AF0FD /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14D8A2691F129333007AF0FD /* Utils.swift */; };
 		14D8A26D1F1298CB007AF0FD /* SnapshotCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14D8A26C1F1298CB007AF0FD /* SnapshotCollectionViewCell.swift */; };
 		14D8A26F1F129AC2007AF0FD /* FavoriteCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14D8A26E1F129AC2007AF0FD /* FavoriteCollectionViewCell.swift */; };
+		14D8A2741F130866007AF0FD /* InterfaceHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14D8A2731F130866007AF0FD /* InterfaceHelper.swift */; };
 		994124CC5E8DA802606BE195 /* Pods_LinioTestCode.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88E72B0377EAB995EE73757A /* Pods_LinioTestCode.framework */; };
 /* End PBXBuildFile section */
 
@@ -39,6 +40,7 @@
 		14D8A2691F129333007AF0FD /* Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		14D8A26C1F1298CB007AF0FD /* SnapshotCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SnapshotCollectionViewCell.swift; sourceTree = "<group>"; };
 		14D8A26E1F129AC2007AF0FD /* FavoriteCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoriteCollectionViewCell.swift; sourceTree = "<group>"; };
+		14D8A2731F130866007AF0FD /* InterfaceHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InterfaceHelper.swift; sourceTree = "<group>"; };
 		72A7FAE5D1824DF5DBDEE979 /* Pods-LinioTestCode.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LinioTestCode.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LinioTestCode/Pods-LinioTestCode.debug.xcconfig"; sourceTree = "<group>"; };
 		88E72B0377EAB995EE73757A /* Pods_LinioTestCode.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LinioTestCode.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8FD24294F5E45A9242966F56 /* Pods-LinioTestCode.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LinioTestCode.release.xcconfig"; path = "Pods/Target Support Files/Pods-LinioTestCode/Pods-LinioTestCode.release.xcconfig"; sourceTree = "<group>"; };
@@ -77,6 +79,7 @@
 		1463AD7A1F11AE0300C04B7E /* LinioTestCode */ = {
 			isa = PBXGroup;
 			children = (
+				14D8A2701F13073D007AF0FD /* Helpers */,
 				14D8A2681F129308007AF0FD /* Utils */,
 				14D552CF1F11F14E0036FAE1 /* ConectionManager */,
 				14D468731F11CED80030F29E /* Model */,
@@ -142,6 +145,14 @@
 				14D8A26E1F129AC2007AF0FD /* FavoriteCollectionViewCell.swift */,
 			);
 			name = Cells;
+			sourceTree = "<group>";
+		};
+		14D8A2701F13073D007AF0FD /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				14D8A2731F130866007AF0FD /* InterfaceHelper.swift */,
+			);
+			name = Helpers;
 			sourceTree = "<group>";
 		};
 		A0AB037D12BD5F5578503A16 /* Frameworks */ = {
@@ -287,6 +298,7 @@
 				14D8A26A1F129333007AF0FD /* Utils.swift in Sources */,
 				14D552D51F11F20A0036FAE1 /* LibraryAPI.swift in Sources */,
 				14D8A2631F128BFA007AF0FD /* WishList.swift in Sources */,
+				14D8A2741F130866007AF0FD /* InterfaceHelper.swift in Sources */,
 				1463AD7C1F11AE0300C04B7E /* AppDelegate.swift in Sources */,
 				14D8A26D1F1298CB007AF0FD /* SnapshotCollectionViewCell.swift in Sources */,
 				14D552D31F11F1C10036FAE1 /* HTTPClient.swift in Sources */,

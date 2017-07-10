@@ -122,6 +122,17 @@ class FavoritesCollectionViewController: UICollectionViewController, DZNEmptyDat
 		
 	}
 	
+	func collectionView(_ collectionView: UICollectionView,layout collectionViewLayout: UICollectionViewLayout,sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
+		
+		if indexPath.section == 0 {
+			return InterfaceHelper.getSizeForSnapshotCell()
+		} else {
+			return InterfaceHelper.getSizeForFavoriteCell()
+		}
+		
+		
+		
+	}
 	// Mark : DZNEmpty DataSetDelegate
 	
 	func image (forEmptyDataSet scrollView: UIScrollView) -> UIImage {
