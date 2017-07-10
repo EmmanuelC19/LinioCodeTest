@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SVProgressHUD
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -54,6 +55,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 		
 		UINavigationBar.appearance().shadowImage = UIImage()
 		UINavigationBar.appearance().setBackgroundImage(UIImage(), for: .default)
+		
+		SVProgressHUD.setForegroundColor(UIColor.orange)
+		SVProgressHUD.setBackgroundColor(UIColor.white)
+		SVProgressHUD.setDefaultMaskType(SVProgressHUDMaskType.black)
+		SVProgressHUD.setMaximumDismissTimeInterval(1.5)
 		
 	}
 

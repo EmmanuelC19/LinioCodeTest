@@ -279,8 +279,8 @@
                             <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
                             <autoresizingMask key="autoresizingMask"/>
                             <subviews>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Todos mis favoritos (6)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vsz-Kc-sYe">
-                                    <rect key="frame" x="108.5" y="16.5" width="158" height="17"/>
+                                <label opaque="NO" userInteractionEnabled="NO" tag="-1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Todos mis favoritos (16)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vsz-Kc-sYe">
+                                    <rect key="frame" x="105" y="16.5" width="165.5" height="17"/>
                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>

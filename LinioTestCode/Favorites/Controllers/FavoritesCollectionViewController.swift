@@ -19,27 +19,28 @@ class FavoritesCollectionViewController: UICollectionViewController, DZNEmptyDat
 	
 	var dataSourceSectionOne : [WishList] = []
 	var dataSourceSectionTwo : [Product] = []
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
+	
+	override func viewDidLoad() {
+		super.viewDidLoad()
+		self.collectionView?.emptyDataSetSource = self
+		self.collectionView?.emptyDataSetDelegate = self
 		requestFavorites()
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-
-    // MARK: UICollectionViewDataSource
-
-    override func numberOfSections(in collectionView: UICollectionView) -> Int {
+	}
+	
+	override func didReceiveMemoryWarning() {
+		super.didReceiveMemoryWarning()
+		// Dispose of any resources that can be recreated.
+	}
+	
+	// MARK: UICollectionViewDataSource
+	
+	override func numberOfSections(in collectionView: UICollectionView) -> Int {
 		
-        return 2
-    }
-
-
-    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+		return 2
+	}
+	
+	
+	override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
 		
 		switch section {
 		case 0:
@@ -49,12 +50,12 @@ class FavoritesCollectionViewController: UICollectionViewController, DZNEmptyDat
 		default:
 			return 0
 		}
-    }
-
-    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+	}
+	
+	override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
 		
 		if indexPath.section == 0 {
-			 let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifierSnap, for: indexPath) as! SnapshotCollectionViewCell
+			let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifierSnap, for: indexPath) as! SnapshotCollectionViewCell
 			
 			let selectedWishlist = dataSourceSectionOne[indexPath.row]
 			let products = selectedWishlist.products
@@ -77,8 +78,8 @@ class FavoritesCollectionViewController: UICollectionViewController, DZNEmptyDat
 			return cell
 		}
 		
-
-    }
+		
+	}
 	
 	override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
 		switch kind {
@@ -88,7 +89,10 @@ class FavoritesCollectionViewController: UICollectionViewController, DZNEmptyDat
 			//let section = indexPath.section
 			
 			let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "Header", for: indexPath)
-				return headerView
+			
+			let titleLabel = headerView.viewWithTag(-1) as! UILabel
+			titleLabel.text = "Todos mis favoritos (\(self.dataSourceSectionTwo.count))"
+			return headerView
 			
 		case UICollectionElementKindSectionFooter:
 			let footerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "Footer", for: indexPath)
@@ -105,7 +109,7 @@ class FavoritesCollectionViewController: UICollectionViewController, DZNEmptyDat
 	func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize{
 		
 		let screenSize: CGRect = UIScreen.main.bounds
-
+		
 		if section == 0 {
 			return CGSize(width: 0, height: 0)
 		} else {
@@ -115,7 +119,7 @@ class FavoritesCollectionViewController: UICollectionViewController, DZNEmptyDat
 				return CGSize(width: 0, height: 0)
 			}
 		}
-	
+		
 	}
 	
 	// Mark : DZNEmpty DataSetDelegate
@@ -129,7 +133,7 @@ class FavoritesCollectionViewController: UICollectionViewController, DZNEmptyDat
 	}
 	
 	func description(forEmptyDataSet scrollView: UIScrollView!) -> NSAttributedString! {
-		return NSAttributedString.init(string: "Por el momento no hay favoritos para mostrar, asegúrate de tener una conexión estable")
+		return NSAttributedString.init(string: "Por el momento no hay favoritos para mostrar")
 		
 		
 	}
@@ -138,7 +142,7 @@ class FavoritesCollectionViewController: UICollectionViewController, DZNEmptyDat
 		
 		let attrString = NSAttributedString (
 			string: "Actualizar",
-			attributes: [NSForegroundColorAttributeName: UIColor.white])
+			attributes: [NSForegroundColorAttributeName: UIColor.orange])
 		
 		return attrString
 	}
@@ -148,10 +152,10 @@ class FavoritesCollectionViewController: UICollectionViewController, DZNEmptyDat
 	}
 	
 	func emptyDataSet(_ scrollView: UIScrollView!, didTap button: UIButton!) {
-			requestFavorites()
+		requestFavorites()
 	}
 	
-	//Mark : Connection Methods 
+	//Mark : Connection Methods
 	
 	func requestFavorites() {
 		
@@ -174,6 +178,6 @@ class FavoritesCollectionViewController: UICollectionViewController, DZNEmptyDat
 		
 	}
 	
-
-
+	
+	
 }
